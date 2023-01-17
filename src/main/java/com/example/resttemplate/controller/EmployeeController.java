@@ -29,15 +29,15 @@ public class EmployeeController {
         service = s;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<EmployeeGroupByAgeDto> groupByAge() {
         EmployeeGroupByAgeDto res = new EmployeeGroupByAgeDto();
         res.setMap(new TreeMap<>(service.groupByAge()));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @GetMapping("/xxx")
-    public ResponseEntity<EmployeeDto> gtAge(@PathParam(value = "age") int age) {
+    @GetMapping(value="",params={"age"})
+    public ResponseEntity<EmployeeDto> gtAge(int age) {
         EmployeeDto res = new EmployeeDto();
         Map<String, List<Employee>> map=new HashMap<>();
         map.put("data",service.getAll());
